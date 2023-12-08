@@ -12,6 +12,10 @@
             - https://github.com/marketplace/actions/azure-login
         - 3rd party simple way
             - https://yourazurecoach.com/2022/12/29/use-github-actions-with-user-assigned-managed-identity/
+    - Use Self-hosted runner
+        - Needed for Managed Identity login
+            - https://github.com/marketplace/actions/azure-login#login-with-user-assigned-managed-identity
+        - 
     - Base Gallery Image
         - https://learn.microsoft.com/en-us/azure/virtual-machines/image-version?tabs=portal%2Ccli2
     - Culprit

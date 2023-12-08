@@ -4,7 +4,8 @@ permissions:
 on: push
 jobs:
   BUILD-CUSTOM-UBUNTU-IMAGE:
-    runs-on: ubuntu-latest    
+    # runs-on: ubuntu-latest    
+    runs-on: self-hosted
     steps:
       # install azure-cli
     - uses: pietrobolcato/install-azure-cli-action@main
