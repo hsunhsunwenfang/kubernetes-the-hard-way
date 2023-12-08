@@ -6,6 +6,8 @@ jobs:
   BUILD-CUSTOM-UBUNTU-IMAGE:
     runs-on: ubuntu-latest    
     steps:
+      # install azure-cli
+    - uses: pietrobolcato/install-azure-cli-action@main
     - name: CHECKOUT
       uses: actions/checkout@v2
     - name: AZURE LOGIN 
