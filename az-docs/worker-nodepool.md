@@ -7,6 +7,11 @@
             - https://learn.microsoft.com/en-us/azure/developer/github/build-vm-image?tabs=userlevel%2Cprincipal
         - Template
             - https://github.com/marketplace/actions/build-azure-virtual-machine-image#sample-workflow-to-create-a-custom-ubuntu-os-image-and-distribute-through-shared-image-gallery
+    - Use Managed Identity
+        - Github official
+            - https://github.com/marketplace/actions/azure-login
+        - 3rd party simple way
+            - https://yourazurecoach.com/2022/12/29/use-github-actions-with-user-assigned-managed-identity/
     - Base Gallery Image
         - https://learn.microsoft.com/en-us/azure/virtual-machines/image-version?tabs=portal%2Ccli2
     - Culprit
