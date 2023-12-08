@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "subscriptionID": {
+        "type": "string",
+        "defaultValue": "2aa714e3-5fa4-45b2-9e3f-88f8eb04588c",
+        "metadata": {
+          "description": "Subscription ID"
+        }
+      },
+      "rgName": {
+        "type": "string",
+        "defaultValue": "hsun",
+        "metadata": {
+          "description": "Resource Group Name"
+        }
+      }
+    },
+    "variables": {},
+    "resources": [
+      {
+        "type": "Microsoft.Authorization/roleDefinitions",
+        "apiVersion": "2018-01-01-preview",
+        "name": "[guid(parameters('subscriptionID'), parameters('rgName'), 'Image Creation Role')]",
+        "properties": {
+          "roleName": "Image Creation Role",
+          "IsCustom": true,
+          "description": "Azure Image Builder access to create resources for the image build",
+          "assignableScopes": [
+            "[concat('/subscriptions/', parameters('subscriptionID'), '/resourceGroups/', parameters('rgName'))]"
+          ],
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.Compute/galleries/read",
+                "Microsoft.Compute/galleries/images/read",
+                "Microsoft.Compute/galleries/images/versions/read",
+                "Microsoft.Compute/galleries/images/versions/write",
+                "Microsoft.Compute/images/write",
+                "Microsoft.Compute/images/read",
+                "Microsoft.Compute/images/delete"
+              ],
+              "notActions": [],
+              "dataActions": [],
+              "notDataActions": []
+            }
+          ]
+        }
+      }
+    ],
+    "outputs": {}
+  }
+  

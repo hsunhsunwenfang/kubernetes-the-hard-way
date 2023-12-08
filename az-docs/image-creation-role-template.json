@@ -1,0 +1,20 @@
+{
+    "Name": "Image Creation Role",
+    "IsCustom": true,
+    "Description": "Azure Image Builder access to create resources for the image build",
+    "AssignableScopes": [
+        "/subscriptions/2aa714e3-5fa4-45b2-9e3f-88f8eb04588c"
+    ],
+    "Actions": [
+        "Microsoft.Compute/galleries/read",
+        "Microsoft.Compute/galleries/images/read",
+        "Microsoft.Compute/galleries/images/versions/read",
+        "Microsoft.Compute/galleries/images/versions/write",
+        "Microsoft.Compute/images/write",
+        "Microsoft.Compute/images/read",
+        "Microsoft.Compute/images/delete"
+    ],
+    "NotActions": [],
+    "DataActions": [],
+    "NotDataActions": []
+}
