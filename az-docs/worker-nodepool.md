@@ -15,7 +15,8 @@
     - Use Self-hosted runner
         - Needed for Managed Identity login
             - https://github.com/marketplace/actions/azure-login#login-with-user-assigned-managed-identity
-        - 
+        - [Omitted at first] Start the self-hosted runner service
+            - https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?learn=hosting_your_own_runners&learnProduct=actions
     - Base Gallery Image
         - https://learn.microsoft.com/en-us/azure/virtual-machines/image-version?tabs=portal%2Ccli2
     - Culprit
