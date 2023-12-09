@@ -5,22 +5,24 @@ on: [push,workflow_dispatch]
 jobs:
   BUILD-CUSTOM-UBUNTU-IMAGE:
     # runs-on: ubuntu-latest    
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-    # - name: Azure CLI test
-    #   uses: azure/CLI@v1
+    # # [FAILED] Use userAssignedIdentity to login to Azure
+    # - name: AZURE LOGIN 
+    #   uses: Azure/login@v1.5.1
     #   with:
-    #     azcliversion: latest
-    #     inlineScript: |
-    #       az version
+    #     auth-type: IDENTITY
+    #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
+    #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+    #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    #     enable-AzPSSession: true
     - name: AZURE LOGIN 
       uses: Azure/login@v1.5.1
       with:
-        auth-type: IDENTITY
+        # auth-type: IDENTITY
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        enable-AzPSSession: true
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:

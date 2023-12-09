@@ -7,7 +7,7 @@
             - https://learn.microsoft.com/en-us/azure/developer/github/build-vm-image?tabs=userlevel%2Cprincipal
         - Template
             - https://github.com/marketplace/actions/build-azure-virtual-machine-image#sample-workflow-to-create-a-custom-ubuntu-os-image-and-distribute-through-shared-image-gallery
-    - Use Managed Identity
+    - Use Managed Identity [FAILED]
         - Github official
             - https://github.com/marketplace/actions/azure-login
         - 3rd party simple way
@@ -17,6 +17,7 @@
             - https://github.com/marketplace/actions/azure-login#login-with-user-assigned-managed-identity
         - [Omitted at first] Start the self-hosted runner service
             - https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?learn=hosting_your_own_runners&learnProduct=actions
+    - Use OIDC
     - Base Gallery Image
         - https://learn.microsoft.com/en-us/azure/virtual-machines/image-version?tabs=portal%2Ccli2
     - Culprit
