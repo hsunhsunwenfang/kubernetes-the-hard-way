@@ -1,7 +1,7 @@
 permissions:
   id-token: write
   contents: read
-on: push
+on: [push,workflow_dispatch]
 jobs:
   BUILD-CUSTOM-UBUNTU-IMAGE:
     # runs-on: ubuntu-latest    

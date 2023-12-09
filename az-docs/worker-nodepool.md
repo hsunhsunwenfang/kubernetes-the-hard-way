@@ -34,3 +34,7 @@
     - https://github.com/Azure/AKS/blob/master/vhd-notes/aks-ubuntu/AKSUbuntu-2204/202310.26.0.txt == /opt/azure/vhd-install.complete
     - [TODO] /opt/azure/tlsbootstrap
     - image related are in /opt/azure/containers
+
+- More to Try
+    - Use AKS as Github action self-hosted agent
+        - https://learn.microsoft.com/en-us/samples/azure-samples/github-runner-on-aks/self-hosted-github-actions-runner-on-aks-azure-kubernetes-service-with-auto-scale-option/
