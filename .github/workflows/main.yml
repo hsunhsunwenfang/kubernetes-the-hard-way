@@ -7,8 +7,6 @@ jobs:
     # runs-on: ubuntu-latest    
     runs-on: self-hosted
     steps:
-      # install azure-cli
-    - uses: pietrobolcato/install-azure-cli-action@main
     - name: CHECKOUT
       uses: actions/checkout@v2
     - name: AZURE LOGIN 
@@ -19,8 +17,6 @@ jobs:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    - name: BUILD WEBAPP
-      run: sudo ${{ GITHUB.WORKSPACE }}/webApp/buildscript.sh # Run necessary build scripts and copies built artifacts to  ${{ GITHUB.WORKSPACE }}/workflow-artifacts
     - name: BUILD-CUSTOM-VM-IMAGE      
       uses: azure/build-vm-image@v0
       with:        
