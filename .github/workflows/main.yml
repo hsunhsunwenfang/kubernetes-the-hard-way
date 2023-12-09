@@ -7,8 +7,6 @@ jobs:
     # runs-on: ubuntu-latest    
     runs-on: self-hosted
     steps:
-    - name: CHECKOUT
-      uses: actions/checkout@v2
     - name: AZURE LOGIN 
       uses: azure/login@v1
       with:
