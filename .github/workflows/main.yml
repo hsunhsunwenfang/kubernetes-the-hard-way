@@ -7,14 +7,14 @@ jobs:
     # runs-on: ubuntu-latest    
     runs-on: self-hosted
     steps:
-    - name: Azure CLI test
-      uses: azure/CLI@v1
-      with:
-        azcliversion: latest
-        inlineScript: |
-          az version
+    # - name: Azure CLI test
+    #   uses: azure/CLI@v1
+    #   with:
+    #     azcliversion: latest
+    #     inlineScript: |
+    #       az version
     - name: AZURE LOGIN 
-      uses: azure/login@v1
+      uses: Azure/login@v1.5.1
       with:
         auth-type: IDENTITY
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
