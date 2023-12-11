@@ -7,6 +7,9 @@
             - https://learn.microsoft.com/en-us/azure/developer/github/build-vm-image?tabs=userlevel%2Cprincipal
         - Template
             - https://github.com/marketplace/actions/build-azure-virtual-machine-image#sample-workflow-to-create-a-custom-ubuntu-os-image-and-distribute-through-shared-image-gallery
+        - All Github Action yaml configuration
+            - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+
     - Configure Environment
         - https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust-user-assigned-managed-identity?pivots=identity-wif-mi-methods-azp#environment-example
     - Use Managed Identity [FAILED]
