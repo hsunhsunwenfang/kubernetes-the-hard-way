@@ -14,17 +14,6 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az version
-    # - name: Azure CLI login identity
-    #   uses: azure/CLI@v1
-    #   with:
-    #     auth-type: IDENTITY
-    #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
-    #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-    #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    #     enable-AzPSSession: true
-    #     azcliversion: latest
-    #     inlineScript: |
-    #       az login --identity --debug
     - name: AZURE LOGIN 
       uses: azure/login@v1
       with:
@@ -32,7 +21,6 @@ jobs:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        enable-AzPSSession: true
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
