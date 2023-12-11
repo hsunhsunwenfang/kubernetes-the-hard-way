@@ -17,12 +17,18 @@ jobs:
     #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
     #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     #     enable-AzPSSession: true
-    - name: Azure CLI script
+    - name: Azure CLI version check
       uses: azure/CLI@v1
       with:
         azcliversion: latest
         inlineScript: |
           az version
+    - name: Azure CLI login identity
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az login --idetity
     - name: AZURE LOGIN 
       uses: azure/login@v1
       with:
