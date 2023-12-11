@@ -33,7 +33,7 @@ jobs:
         enable-AzPSSession: true
         azcliversion: latest
         inlineScript: |
-          az login --identity
+          az login --identity --debug
     - name: AZURE LOGIN 
       uses: azure/login@v1
       with:
