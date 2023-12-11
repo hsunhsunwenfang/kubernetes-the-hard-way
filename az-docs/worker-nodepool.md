@@ -7,6 +7,8 @@
             - https://learn.microsoft.com/en-us/azure/developer/github/build-vm-image?tabs=userlevel%2Cprincipal
         - Template
             - https://github.com/marketplace/actions/build-azure-virtual-machine-image#sample-workflow-to-create-a-custom-ubuntu-os-image-and-distribute-through-shared-image-gallery
+    - Configure Environment
+        - https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust-user-assigned-managed-identity?pivots=identity-wif-mi-methods-azp#environment-example
     - Use Managed Identity [FAILED]
         - Github official
             - https://github.com/marketplace/actions/azure-login
@@ -15,22 +17,26 @@
     - Use Self-hosted runner
         - Needed for Managed Identity login
             - https://github.com/marketplace/actions/azure-login#login-with-user-assigned-managed-identity
-        - [Omitted at first] Start the self-hosted runner service
+        - Start the self-hosted runner service [Omitted-at-first-but-crucial]
             - https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?learn=hosting_your_own_runners&learnProduct=actions
-    - Use OIDC
+    - Use OIDC [FAILED]
     - Base Gallery Image
         - https://learn.microsoft.com/en-us/azure/virtual-machines/image-version?tabs=portal%2Ccli2
     - Culprit
         - RoleDefinitionLimitExceeded
             - Combine roles
                 - But no roles has all this actions
-            - Use Contributor for now
+            - Mitigation
+                - Use Contributor for now
         - Unsupported region of federated credential
             - https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-considerations#unsupported-regions-user-assigned-managed-identities
             - Both the MI and it's RG should be compliant to the region supportability
-- Create VMSS from custom image
+        - Azure Login cannot work with MI or OIDC
+
+- Create VMSS from custom image [TODO]
     - https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli
 
+- Try vmss download manually
 
 - AKS node and /opt/azure/vhd-install.complete
     - https://github.com/Azure/AKS/blob/master/vhd-notes/aks-ubuntu/AKSUbuntu-2204/202310.26.0.txt == /opt/azure/vhd-install.complete
