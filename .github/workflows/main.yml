@@ -22,3 +22,18 @@ jobs:
           az account show
           az group list
           pwd
+    - name: BUILD-CUSTOM-VM-IMAGE      
+      uses: azure/build-vm-image@v0
+      with: 
+        resource-group-name: 'kubernetes-the-hard-way'
+        managed-identity: '/subscriptions/2aa714e3-5fa4-45b2-9e3f-88f8eb04588c/resourceGroups/kubernetes-the-hard-way/providers/Microsoft.ManagedIdentity/userAssignedIdentities/github-action-agent'
+        location: 'australiasoutheast'
+        source-os-type: 'linux'        
+        # source-image: Canonical:UbuntuServer:18.04-LTS:latest
+        source-image: Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest
+        customizer-source: ${{ github.workspace }}/az-docs/vhd-build/init.sh
+        customizer-script: |
+          sh /vhd-build/init.sh
+        dist-type: 'SharedImageGallery'
+        dist-resource-id: '/subscriptions/{subscriptionID}/resourceGroups/{rgName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}/versions/0.1.${{ GITHUB.RUN_ID }}'
+        dist-location: ''
