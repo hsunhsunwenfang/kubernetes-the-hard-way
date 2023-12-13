@@ -15,7 +15,7 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az version
-    - name: AZURE LOGIN 
+    - name: 'Az cli login'
       uses: azure/login@v1
       with:
         # auth-type: IDENTITY
