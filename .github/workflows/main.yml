@@ -10,6 +10,12 @@ jobs:
     # runs-on: ubuntu-latest
     runs-on: ubuntu-latest
     steps:
+    - name: Azure CLI version check
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az version
     - name: 'Az CLI login'
       uses: azure/login@v1
       with:
