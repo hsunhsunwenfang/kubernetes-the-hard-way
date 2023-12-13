@@ -1,23 +1,49 @@
-name: Run Azure Login with OpenID Connect
-on: [push,workflow_dispatch]
-
 permissions:
-      id-token: write
-      contents: read
-      
-jobs: 
-  build-and-deploy:
+  id-token: write
+  contents: write
+  issues: write
+on: [push,workflow_dispatch]
+jobs:
+  BUILD-CUSTOM-UBUNTU-IMAGE:
+    # runs-on: ubuntu-latest    
     runs-on: ubuntu-latest
+    # environment: prd-sp
     steps:
-    - name: 'Az CLI login'
+    - name: Azure CLI version check
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az version
+    - name: AZURE LOGIN 
       uses: azure/login@v1
       with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID_SP }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-  
-    - name: 'Run Azure CLI commands'
-      run: |
+        # auth-type: IDENTITY
+        # client-id: ${{ secrets.AZURE_CLIENT_ID_MI }}
+        client-id: ${{ secrets.AZURE_CLIENT_ID_SP }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        # environment: prd-sp
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
           az account show
-          az group list
-          pwd
+    - name: BUILD-CUSTOM-VM-IMAGE      
+      uses: azure/build-vm-image@v0
+      with:        
+        resource-group-name: 'myResourceGroup'
+        managed-identity: 'myImageBuilderIdentity'
+        location: 'eastus2'
+        source-os-type: 'linux'        
+        # source-image: Canonical:UbuntuServer:18.04-LTS:latest
+        source-image: Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest
+        customizer-source: /vhd-build/init.sh
+        customizer-script: |
+          sh /vhd-build/init.sh
+        dist-type: 'SharedImageGallery'
+        dist-resource-id: ''
+        dist-location: 'eastus2'
+          
+        
