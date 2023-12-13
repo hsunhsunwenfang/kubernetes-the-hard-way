@@ -14,8 +14,6 @@ jobs:
       uses: azure/CLI@v1
       with:
         azcliversion: latest
-        inlineScript: |
-          az version
     - name: 'Az CLI login'
       uses: azure/login@v1
       with:
