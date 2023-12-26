@@ -1,0 +1,53 @@
+
+- PKI
+    - https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure/
+- SSL Cert elements
+    - Common Name
+    - DNS Name
+    - Dates valid
+    - Public Key
+    - Issuer Signature
+    - Issuer Name and Organization
+- Key Protection
+    - HSMs (Hardware Security Modules) are used to store and protect keys
+
+# More
+
+- Scp with ssh config
+    - scp haha controller_vm0:/home/hsunwen/haha
+- Cloud Academy for Certificates
+    - Link
+        - https://cloudacademy.com/course/ds300p-certificates-are-awesome-1425/ds300p-certificates-are-awesome/
+    - Steps
+        - Create a Root CA which is self-signed
+            - doesnot expire and cannot leave the CA
+        - Associate some intermediate CAs with the root CA
+        - Create a public key by one-way hash function
+        -  and certificate for each server
+        - Public key digest is signed by the CA private key -> self-signed certificate
+    - Certificate anatomy of X.509
+        - Serial number
+        - Signature algorithm
+        - Issuer
+        - Subject
+        - Public key
+        - Validity period
+        - Signature
+        - Enhanced key usage
+        - Key usage
+    - Purpose of CA
+        - Issue certificates
+        - CRL (Certificate Revocation List) contains serial numbers of certificates that have been revoked
+    - Hierarchical
+        - Root CA -> Intermediate CA
+        - Both root and intermediate CA are self-signed and can issue certificates
+    - Certificate Storage
+        - Personal
+        - Trusted Root Certification Authorities
+        - Intermediate Certification Authorities
+        - Registry, File System, Smart Card
+    - Certificat Chaining
+        - certificate should be trusted by the server and client
+        - chaining engine
+            - try to find parent certificate in the local store
+            - try to find parent certificate in the remote store listed in AIA (Authority Information Access) extension

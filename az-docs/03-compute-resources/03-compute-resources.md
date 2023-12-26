@@ -1,6 +1,8 @@
 
 
 
+# Build VM
+
 - Github Action for custom image
     - Link
         - MS Learn
@@ -44,17 +46,42 @@
 - Create VMSS from custom image [TODO]
     - https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli
 
-- Try vmss download manually
+- ssh-config for vmss
+    - [TODO] store vmss ssh keys by az-cli scripting
+    - [TODO] Configure .ssh/config by az-cli
+        - Get vmss with tag
+            - controllervmss=$(az vmss list --query "[?tags.node_type=='controller'].name" -otsv)
+        - List instances
+            -  az vmss list-instances -g kubernetes-the-hard-way -n $controllervmss
+    - [TODO] Configure .ssh/config by az-python sdk
+        - Get vmss with tag
+            - controllervmss=$(az vmss list --query "[?tags.node_type=='controller'].name" -otsv)
+        - List instances
+            -  az vmss list-instances -g kubernetes-the-hard-way -n $controllervmss
+
+
+# More
 
 - AKS node and /opt/azure/vhd-install.complete
     - https://github.com/Azure/AKS/blob/master/vhd-notes/aks-ubuntu/AKSUbuntu-2204/202310.26.0.txt == /opt/azure/vhd-install.complete
     - [TODO] /opt/azure/tlsbootstrap
     - image related are in /opt/azure/containers
 
-- More to Try
-    - Use AKS as Github action self-hosted agent
-        - https://learn.microsoft.com/en-us/samples/azure-samples/github-runner-on-aks/self-hosted-github-actions-runner-on-aks-azure-kubernetes-service-with-auto-scale-option/
+- cloud-init
+    - github
+        - https://github.com/canonical/cloud-init
 
-- Reference
-    - Alex Github
-        - https://github.com/alexxiongxiong/GoWebApp/blob/main/.github/workflows/main.yaml
+- Azure Linux Agent waagent
+    - Path in node
+        - /var/lib/waagent/WALinuxAgent-2.9.1.1/bin/WALinuxAgent-2.9.1.1-py3.8.egg
+    - Github
+        - WALinuxAgent/azurelinuxagent at master · Azure/WALinuxAgent (github.com)
+    - Remark
+        - the .egg extension is simply a zip, we can rename .egg to .zip and unzip.
+        - The unzipped folder will contains the azurelinuxagent folder that sits the cloud-init py scripts
+
+# Reference
+
+- Alex Github
+    - https://github.com/alexxiongxiong/GoWebApp/blob/main/.github/workflows/main.yaml
+

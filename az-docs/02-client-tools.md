@@ -69,7 +69,7 @@ Version: <version>
 Runtime: go1.12.12
 ```
 
-## Install kubectl
+## Install kubectl [TODO]
 
 The `kubectl` command line utility is used to interact with the Kubernetes API Server. Download and install `kubectl` from the official release binaries:
 
